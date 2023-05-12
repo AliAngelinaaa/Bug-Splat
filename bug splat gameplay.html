@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Big Splat</title>
+		<style>
+			body
+			{
+				background-image: url("carpet.jpg");
+			}
+			img
+			{
+				display: block;
+				width: 50%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			div
+			{
+				border-radius: 10px;
+				border: 3px solid #ffaea7;
+				background-color: white;
+				text-align: center;
+				font-family: Century Gothic;
+			}
+			h1
+			{
+				font-size: 50px;
+				text-border: red;
+				text-shadow: 3px 5px pink;
+				letter-spacing: 3px;
+				color: black;
+				text-align: center;
+			}
+			img:hover 
+			{
+			  animation: shake 0.5s;
+			  animation-iteration-count: infinite;
+			}
+			@keyframes shake 
+			{
+			  0% { transform: translate(2px, 2px) rotate(0deg);}
+			  10% { transform: translate(-1px, -2px) rotate(-1deg);}
+			  20% { transform: translate(-5px, 0px) rotate(1deg);}
+			  30% { transform: translate(3px, 2px) rotate(0deg);}
+			  40% { transform: translate(1px, -1px) rotate(getRandomInteger(0, 600));}
+			  50% { transform: translate(-1px, 2px) rotate(-1deg);}
+			  60% { transform: translate(-3px, 1px) rotate(20deg);}
+			  70% { transform: translate(3px, 1px) rotate(-1deg);}
+			  80% { transform: translate(-2px, -2px) rotate(1deg);}
+			  90% { transform: translate(1px, 2px) rotate(0deg);}
+			  100% { transform: translate(1px, -2px) rotate(-1deg);}
+			}
+		</style>
+		<script>
+			function initialize()
+			{	
+				BugsAlive = document.getElementById("BugsNeedToDie");
+				MessageOutput = document.getElementById("Messagelog");
+				
+				BugCount= 15;
+				
+				MessageOutBox = ["OOOOOOOOOOOOOOOOoooooooooooooooHHHHHHHHHHHHHHHHhhhhhhh. Now Mamma’s angry!!!", "That's it. You've splatted us all.","Please don't kill me!","I will go away if you let me free!",  "I will tell the others to go away!", "Let me free please!", "What have I ever done to hurt you?", "Kill me!", "Why is this happening to me?","AAAAAAAAAAAAAAAAAAAAAAAAHHHHH ajkdhdfhafhasifj", "I have a family to take care of. Please don't kill me!", "Please let me go???", "I will never harm you please!", "Just kill me and give me everlasting peace", "So this is death?", "HAAAAAALLLP MEEEEEEEEE!", "Tell them I'm sorry", "Please let me live!!", "I have children to live for please!!!", "My mom is gonna be devastated! please!", "Grandma, I think I see you.", "Let me die.", "I promise with my soul that we will never bother you ever again.", "We are desperate. Let us go!", "What will my family think when I am gone?","GO AWAAY PLEASSSSE!",
+				"Oh please, like you have the guts to kill me.", "WE ALL SPRANG FROM APES, BUT YOU DIDN'T SPRING FAR ENOUGH.", "YO MAMA'S HOUSE IS SO DIRTY THAT ROACHES RIDE AROUND ON DUNE BUGGIES!", "THERE ARE ONLY TWO THINGS I DISLIKE ABOUT YOU. YOUR FACE.", "Mirrors can't talk to you, but lucky for you, they can't laugh either.", "Is your arse jealous about the amount of shist that came out of your mouth?", "You are a proof that god has a sense of humor.", "Do you practise being ugly?", "I envy people who have never met you.", "You’re impossible to underestimate.", "If I wanted to commit suicide I’d climb to your ego and jump to your IQ.", "No I'm not insulting you, I'm describing you.", "You're so fake, Barbie is jealous.", "You really want to get hurt don't you?", "Bite Me.", "Ooh I'm shaking in fear", "You are more disappointing than an unsalted pretzel.", "Light travels faster than sound which is why you seemed bright until you spoke.", "Your kid is so ugly, he makes his Happy Meal cry.", "Hold still. I’m trying to imagine you with personality.", "Keep rolling your eyes, you might eventually find a brain.","Your hairline comes home 15 minutes after you do.", "I would challenge you to a battle of wits but I see you have come unarmed.", "I can explain this to you, but I can't understand it for you.", "You should carry around a potted plant. And apologize to it constantly for wasting the oxygen it produces." , "Your birth certificate was a waste of paper.", "Your birth certificate could double as an apology letter from the condom company.", "You look like your face caught fire, and someone put it out with a screwdriver.", "One more neurone and you might even manage a synapse if you're lucky.", "Your brain is on airplane mode.", "You’re as sharp as a meatball.", "Did your parents have any children they didn't regret?", "You have the moral backbone of a chocolate eclair.", "I would rather lay down face first in a campfire.", "You have the personality of a dead cat.", "That's why you use auto tune and I don't.", "You roll up your victim complex like a newspaper and beat people in the head with it.", "If a hungry cannibal cracked open your head looking for a snack, he wouldn’t find enough to cover a small cracker.", "Everyone who has ever loved you was wrong.", "You smell like a third-world proctologist's finger.", "You useless paperclip.", "The only time you improve a place is by leaving.", "You break everything you touch.","Everyone you think likes you only tolerates you.", "Well, aren't you all the way at the top of the bell curve.", "Your tattoo looks like roadrash.", "You're so shallow I could stand in a puddle of you and not get my feet wet.", "You look like you were drawn with someone’s left hand.", "You should have been an abortion. Too bad your mom didn't have a wire coat hanger.", "You got a forehead like the back of a minivan.", "Yo mama so fat, Thanos had to snap twice.", "you are an absolute dumpster fire of a human being.", " Your last name sounds like the sound a cat would make when puking.", "You seem like the kinda retard who’d stick the gum on top of the desk", "I bet you eat cereal with a fork", "Bet you eat popcorn with a spoon", "you are like Kobe but without the talent", "I don't have enough patience or crayons to explain this to you.","Did you eat a bowl of stupid for breakfast?", "You dance like a roblox character."
+				];
+
+				bugs = ["bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png", "bug before dying.png"];
+				
+				ImageId = ["Image1", "Image2", "Image3", "Image4", "Image5", "Image6", "Image7", "Image8", "Image9", "Image10", "Image11", "Image12", "Image13", "Image14", "Image15", "Image16"];
+	
+				var bugTable = document.getElementById("bugtbl");
+				bugImages = bugTable.getElementsByTagName("img");
+				
+				MessageLog= "";
+				
+				document.getElementById("Image16").style.display= "none";
+				
+				Whattosay();
+				display();
+				
+				
+				}
+			function getRandomInteger(lower, upper) 
+			{
+				var multiplier = upper - (lower - 1);
+				var rnd = Math.floor(Math.random()*multiplier) + lower;
+				
+				return rnd;
+			}
+			function BugResponse(high,low)
+			{
+				AnyNumber =getRandomInteger(high, low);
+				MessageLog = MessageOutBox[AnyNumber];
+				MessageOutBox.splice(AnyNumber,1);
+			}
+			function Whattosay()
+			{
+				if (BugCount >= 8)
+				{	
+					BugResponse(24,(MessageOutBox.length - 1));
+				}
+				if (BugCount <8)
+				{
+					BugResponse(2,20);
+				}
+				if (BugCount == 1)
+				{
+					BugResponse(1,1)
+				}
+				if (BugCount == 0)
+				{
+					MommaBugIsComing();
+				}
+				console.log(MessageLog);
+				returningbug();
+				display();
+			}
+			function returningbug()
+			{
+				if (BugCount <= 8)
+				{
+					Resurection = getRandomInteger(1, 100);
+					var imageofresurected= getRandomInteger(0,14);
+					
+					if (Resurection <= 10)
+					{
+						if (bugs[imageofresurected] == "bug getting crushed.png")
+						{
+							BugCount = (BugCount + 1);
+							bugs[imageofresurected] = "bed-bugs-polaroid.png";
+						}
+					}
+				}
+			}
+			
+			function MommaBugIsComing()
+			{
+					for (var imge = 0; imge < (ImageId.length-1); imge++)
+						document.getElementById(ImageId[imge]).style.display="none";
+					
+					MessageLog= MessageOutBox[0];
+					document.getElementById("Image16").style.display= "block";
+					
+					document.body.style.background = "url('the end.png')";
+			}
+			function imageBugdying (idx)
+			{
+					if (bugs[idx] == "bug before dying.png") 
+					{
+						bugs[idx] = "bug getting crushed.png";
+						BugCount= BugCount - 1;
+						}
+					if (bugs[idx] =="bug getting crushed.png")
+						{
+							BugCount= BugCount;
+						}
+					if (bugs[idx] == "bed-bugs-polaroid.png") 
+					{
+						BugCount= BugCount - 1;
+						bugs[idx] = "bug getting crushed.png";
+					}
+				Whattosay();
+				display();
+			}
+		
+			function display()
+			{
+				BugsAlive.innerHTML = BugCount;
+				MessageOutput.innerHTML = MessageLog;
+				
+				for (var i = 0; i < bugImages.length; i++)
+					bugImages[i].src = bugs[i];
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		
+		<h1 id="Title">
+			Bug Splat
+		</h1>
+		<div>Number of Bugs Alive:<span id="BugsNeedToDie"></span></div>
+		<table id = "bugtbl">
+			<tr>
+				<td><img src="bug before dying.png" id="Image1" onclick="imageBugdying(0)"/></td>
+				<td><img src="bug before dying.png" id="Image2" onclick="imageBugdying(1)"/></td>
+				<td><img src="bug before dying.png" id="Image3" onclick="imageBugdying(2)"/></td>
+				<td><img src="bug before dying.png" id="Image4" onclick="imageBugdying(3)"/></td>
+				<td><img src="bug before dying.png" id="Image5" onclick="imageBugdying(4)"/></td>
+			</tr>
+			<tr>
+				<td><img src="bug before dying.png" id="Image6" onclick="imageBugdying(5)"/></td>
+				<td><img src="bug before dying.png" id="Image7" onclick="imageBugdying(6)"/></td>
+				<td><img src="bug before dying.png" id="Image8" onclick="imageBugdying(7)"/></td>
+				<td><img src="bug before dying.png" id="Image9" onclick="imageBugdying(8)"/></td>
+				<td><img src="bug before dying.png" id="Image10" onclick="imageBugdying(9)"/></td>
+			</tr>
+			<tr>	
+				<td><img src="bug before dying.png" id="Image11" onclick="imageBugdying(10)"/></td>
+				<td><img src="bug before dying.png" id="Image12" onclick="imageBugdying(11)"/></td>
+				<td><img src="bug before dying.png" id="Image13" onclick="imageBugdying(12)"/></td>
+				<td><img src="bug before dying.png" id="Image14" onclick="imageBugdying(13)"/></td>
+				<td><img src="bug before dying.png" id="Image15" onclick="imageBugdying(14)"/></td>
+			</tr>
+		</table>
+	
+			<img src="mommabug.png" id="Image16"/>
+		
+			</br>
+			<div> What the bugs are saying. Translated to English from the buggy language:</div>
+			<div id= "Messagelog"></div>
+	</body>
+</html>
