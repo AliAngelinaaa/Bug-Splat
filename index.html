@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bug Splat</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-image: url("carpet.jpg");
+			background-size: cover;
+			margin: 0;
+			padding: 20px;
+			line-height: 1.6;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		h1 {
+			font-size: 3rem;
+			color: #333;
+			text-align: center;
+			text-shadow: 2px 2px 4px rgba(255, 174, 167, 0.5);
+		}
+		.description {
+			text-align: justify;
+			margin-bottom: 20px;
+		}
+		img {
+			display: block;
+			max-width: 200px;
+			margin: 20px auto;
+		}
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			margin: 10px;
+			background-color: #ffaea7;
+			color: #333;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s;
+		}
+		.btn:hover {
+			background-color: #ff8c82;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Bug Splat</h1>
+		<div class="description">
+			<p>Your home has become infested with dangerous alien bugs. Sadly, all attempts to negotiate with the invaders have failed. You are left with no alternative but to begin splatting.</p>
+			<p>You will splat 15 bugs by clicking on them while the bugs make comments to try and dissuade you. Do your best to resist them, but they really won't be moving anywhere besides where they are currently.</p>
+			<p>Your job is to splat the bugs by clicking on them. Each time a bug is splatted, the page should replace the image of the bug with a splat image. If you click on a bug that has already been splatted, nothing should happen.</p>
+			<p>The bugs have a large bank of comments that can be either pleading, insulting, or defiant in nature. Note that there will be phrases that may trigger you.</p>
+			<p>While there are still at least 8 bugs left on screen, the bugs will be defiant. Once their numbers dip below that threshold, they will begin to beg for mercy.</p>
+			<p>No comment should ever be used twice during a single execution of the page.</p>
+		</div>
+		<img src="ugly.png" alt="Ugly bug">
+		<div class="buttons">
+			<a href="Bug Splat Gameplay.html" class="btn">Let's get on with it</a>
+			<a href="bug splat annoying mode.html" class="btn">More annoying mode</a>
+		</div>
+	</div>
+	<script>
+		function initialize() {
+			// Initialization code here
+		}
+		
+		document.addEventListener('DOMContentLoaded', initialize);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
